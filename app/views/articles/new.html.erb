@@ -1,0 +1,13 @@
+<% content_for :title, "New article" %>
+
+<h1>New Article</h1>
+
+<!-- Rendering the form partial -->
+<%= render 'form', article: @article %>
+
+<br>
+
+<!-- Back link with Bootstrap styling -->
+<div>
+  <%= link_to 'Back', articles_path, class: 'btn btn-secondary' %>
+</div>

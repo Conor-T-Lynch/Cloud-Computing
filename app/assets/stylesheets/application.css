@@ -1,0 +1,62 @@
+/* Body styling to center the content */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Header styling to center the navbar items */
+  header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #f8f9fa;
+  }
+  
+  /* Navbar styling */
+  .navbar {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  /* Change the title color to black */
+  .navbar-brand {
+    color: black !important;
+    font-weight: bold;
+  }
+  
+  /* Button styles */
+  .nav-link {
+    color: #007bff !important; /* Bootstrap's default blue */
+  }
+  
+  /* Change button hover color to blue */
+  .nav-link:hover {
+    color: #0056b3 !important; /* A darker blue on hover */
+  }
+  
+  /* Center main content */
+  .content-wrapper {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-width: 800px;
+    width: 100%;
+    margin: 20px auto;
+    text-align: center; /* Center text within the content */
+  }
+  
+  /* Logout button form fix */
+  .logout-form {
+    display: inline;
+  }
+  
