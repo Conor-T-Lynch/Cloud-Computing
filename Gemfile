@@ -4,6 +4,7 @@ gem 'pg'
 gem 'pundit'
 gem 'bootstrap', '~> 5.1.0'
 gem 'devise'
+gem 'rails-observers', '~> 0.1.3'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.1"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
