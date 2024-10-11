@@ -29,7 +29,7 @@ jobs:
           chmod +x path/to/your/setup_script.rb
 
       - name: Run setup script
-        run: path/to/your/setup_script.rb
+        run: bin/setup_script.rb
 
       - name: Scan for common Rails security vulnerabilities using static analysis
         run: bundle exec bin/brakeman --no-pager
