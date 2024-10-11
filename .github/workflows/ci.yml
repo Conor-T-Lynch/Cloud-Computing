@@ -24,6 +24,7 @@ jobs:
           chmod +x bin/brakeman
           chmod +x bin/importmap
           chmod +x bin/rubocop
+          chmod +x bin/rails
 
       - name: Scan for common Rails security vulnerabilities using static analysis
         run: bundle exec bin/brakeman --no-pager
@@ -42,14 +43,15 @@ jobs:
           bundler-cache: true
 
       - name: Set executable permissions for scripts
-        run: chmod +x bin/importmap
+        run: |
+          chmod +x bin/importmap
+          chmod +x bin/rails
 
       - name: Scan for security vulnerabilities in JavaScript dependencies
         run: bundle exec bin/importmap audit
 
   lint:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -59,9 +61,6 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
-
-      - name: Set executable permissions for scripts
-        run: chmod +x bin/rubocop
 
       - name: Lint code for consistent style
         run: bundle exec bin/rubocop -f github
@@ -95,6 +94,9 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+
+      - name: Set executable permissions for bin/rails
+        run: chmod +x bin/rails
 
       - name: Set up database
         run: |
