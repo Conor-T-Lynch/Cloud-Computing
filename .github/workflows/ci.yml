@@ -26,7 +26,7 @@ jobs:
           chmod +x bin/rubocop
           chmod +x bin/rails
           chmod +x bin/rake
-          chmod +x path/to/your/setup_script.rb
+          chmod +x bin/setup_script.rb
 
       - name: Run setup script
         run: bin/setup_script.rb
