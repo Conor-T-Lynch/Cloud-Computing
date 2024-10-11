@@ -23,6 +23,7 @@ jobs:
         run: |
           chmod +x bin/brakeman
           chmod +x bin/importmap
+          chmod +x bin/rubocop
 
       - name: Scan for common Rails security vulnerabilities using static analysis
         run: bundle exec bin/brakeman --no-pager
