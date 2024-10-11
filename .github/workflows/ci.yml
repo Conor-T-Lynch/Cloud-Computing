@@ -49,6 +49,7 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -58,6 +59,9 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+
+      - name: Set executable permissions for scripts
+        run: chmod +x bin/rubocop
 
       - name: Lint code for consistent style
         run: bundle exec bin/rubocop -f github
