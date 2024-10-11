@@ -19,11 +19,13 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
-      - name: Set executable permissions for Brakeman
-        run: chmod +x bin/brakeman
+      - name: Set executable permissions for scripts
+        run: |
+          chmod +x bin/brakeman
+          chmod +x bin/importmap
 
       - name: Scan for common Rails security vulnerabilities using static analysis
-        run: bin/brakeman --no-pager
+        run: bundle exec bin/brakeman --no-pager
 
   scan_js:
     runs-on: ubuntu-latest
@@ -38,8 +40,11 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Set executable permissions for scripts
+        run: chmod +x bin/importmap
+
       - name: Scan for security vulnerabilities in JavaScript dependencies
-        run: bin/importmap audit
+        run: bundle exec bin/importmap audit
 
   lint:
     runs-on: ubuntu-latest
@@ -54,7 +59,7 @@ jobs:
           bundler-cache: true
 
       - name: Lint code for consistent style
-        run: bin/rubocop -f github
+        run: bundle exec bin/rubocop -f github
 
   test:
     runs-on: ubuntu-latest
