@@ -1,5 +1,4 @@
 source "https://rubygems.org"
-
 gem 'pg'
 gem 'pundit'
 gem 'bootstrap', '~> 5.1.0'
