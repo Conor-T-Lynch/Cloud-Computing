@@ -26,10 +26,10 @@ jobs:
           chmod +x bin/rubocop
           chmod +x bin/rails
           chmod +x bin/rake
-          chmod +x bin/setup.rb
+          chmod +x bin/setup
 
       - name: Run setup script
-        run: bin/setup.rb
+        run: bin/setup
 
       - name: Scan for common Rails security vulnerabilities using static analysis
         run: bundle exec bin/brakeman --no-pager
