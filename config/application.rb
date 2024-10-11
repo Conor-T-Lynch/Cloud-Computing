@@ -16,7 +16,7 @@ module InfoManagementSystem
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
-    config.autoload_paths += %W(#{config.root}/app/models/observers)
+    config.autoload_paths += %W[#{config.root}/app/models/observers]
 
     config.active_record.observers = :password_reset_observer
 
