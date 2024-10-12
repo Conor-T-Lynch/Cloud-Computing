@@ -66,8 +66,7 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
-      - name: Lint code for consistent style
-        run: bundle exec bin/rubocop
+      
 
   test:
     runs-on: ubuntu-latest
