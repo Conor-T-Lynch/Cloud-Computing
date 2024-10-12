@@ -2,6 +2,6 @@ test:
   adapter: postgresql
   encoding: unicode
   database: ci_test
-  username: postgres
-  password: password
+  username: postgres1
+  password: Conz060993100489#
   host: 127.0.0.1
