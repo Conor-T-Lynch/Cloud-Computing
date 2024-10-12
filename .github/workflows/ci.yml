@@ -16,7 +16,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
+          ruby-version: '3.3.5'
           bundler-cache: true
 
       - name: Set executable permissions for scripts
