@@ -21,14 +21,14 @@ jobs:
 
       - name: Set executable permissions for scripts
         run: |
-          git update-index --chmod=+x bin/brakeman
-          git update-index --chmod=+x bin/importmap
-          git update-index --chmod=+x bin/rubocop
-          git update-index --chmod=+x bin/rails
-          git update-index --chmod=+x bin/rake
-          git update-index --chmod=+x bin/setup
+          chmod +x bin/brakeman
+          chmod +x bin/importmap
+          chmod +x bin/rubocop
+          chmod +x bin/rails
+          chmod +x bin/rake
+          chmod +x bin/setup
 
-      
+     
 
       - name: Scan for common Rails security vulnerabilities using static analysis
         run: bundle exec bin/brakeman --no-pager
@@ -48,8 +48,8 @@ jobs:
 
       - name: Set executable permissions for scripts
         run: |
-          git update-index --chmod=+x bin/importmap
-          git update-index --chmod=+x bin/rails
+          chmod +x bin/importmap
+          chmod +x bin/rails
 
       - name: Scan for security vulnerabilities in JavaScript dependencies
         run: bundle exec bin/importmap audit
@@ -100,7 +100,7 @@ jobs:
           bundler-cache: true
 
       - name: Set executable permissions for bin/rails
-        run: git update-index --chmod=+x bin/rails
+        run: chmod +x bin/rails
 
       - name: Set up database
         run: |
