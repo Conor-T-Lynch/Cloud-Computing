@@ -4,6 +4,7 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem "sqlite3"
 #
+
 default: &default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -11,7 +12,15 @@ default: &default
 
 development:
   <<: *default
-  database: storage/development.sqlite3
+
+  development:
+  adapter: postgresql
+  encoding: unicode
+  database: ci_test
+  pool: 5
+  username: your_db_username
+  password: your_db_password
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
