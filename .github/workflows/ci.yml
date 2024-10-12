@@ -28,10 +28,7 @@ jobs:
           git update-index --chmod=+x bin/rake
           git update-index --chmod=+x bin/setup
 
-      - name: Run setup script
-        run: |
-              chmod=+x bin/setup
-              bin/setup
+      
 
       - name: Scan for common Rails security vulnerabilities using static analysis
         run: bundle exec bin/brakeman --no-pager
