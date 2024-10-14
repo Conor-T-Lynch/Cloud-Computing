@@ -16,11 +16,11 @@ module InfoManagementSystem
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
+    # Ensure the observers are loaded from the specified directory
     config.autoload_paths += %W[#{config.root}/app/models/observers]
 
-    config.active_record.observers = :password_reset_observer
-
-    config.active_record.observers = :article_observer
+    # Configure Active Record observers
+    config.active_record.observers = :password_reset_observer, :article_observer
 
     # Configuration for the application, engines, and railties goes here.
     #
