@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   scan_ruby:
@@ -27,8 +27,8 @@ jobs:
           chmod +x bin/rails
           chmod +x bin/rake
           chmod +x bin/setup
-
      
+
 
       - name: Scan for common Rails security vulnerabilities using static analysis
         run: bundle exec bin/brakeman --no-pager
@@ -56,6 +56,7 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -65,25 +66,13 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
-
       
+
 
   test:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: ci_test
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U postgres"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+      
+
 
     steps:
       - name: Install packages
@@ -104,7 +93,8 @@ jobs:
       - name: Set up database
         run: |
           cp config/database.yml.ci config/database.yml
-          bundle exec bin/rails db:setup
+          bundle exec bin/rails db:create
+          bundle exec bin/rails db:schema:load
 
       - name: Run tests
         env:
