@@ -14,10 +14,10 @@ module InfoManagementSystem
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w[assets tasks])
+    config.autoload_paths << Rails.root.join('lib')
 
     # Ensure the observers are loaded from the specified directory
-    config.autoload_paths += %W[#{config.root}/app/models/observers]
+    config.autoload_paths += %W[{config.root}/app/models/observers]
 
     # Configure Active Record observers
     config.active_record.observers = :password_reset_observer, :article_observer

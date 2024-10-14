@@ -359,6 +359,7 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
+  zeitwerk
 
 BUNDLED WITH
    2.5.19
