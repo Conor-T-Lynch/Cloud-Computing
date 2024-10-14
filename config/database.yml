@@ -13,10 +13,10 @@ default: &default
   pool: 5
   timeout: 5000
 
-adapter: sqlite3
+
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: db/migrate/development.sqlite3
 
 
 # Warning: The database defined as "test" will be erased and
@@ -25,11 +25,11 @@ development:
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: db/migrate/test.sqlite3
 
 
 # For production, ensure the database path is on a persistent volume when deployed.
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: db/migrate/production.sqlite3
