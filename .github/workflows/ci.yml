@@ -27,8 +27,6 @@ jobs:
           chmod +x bin/rails
           chmod +x bin/rake
           chmod +x bin/setup
-     
-
 
       - name: Scan for common Rails security vulnerabilities using static analysis
         run: bundle exec bin/brakeman --no-pager
@@ -66,13 +64,12 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
-      
 
+      - name: Run RuboCop
+        run: bundle exec bin/rubocop
 
   test:
     runs-on: ubuntu-latest
-      
-
 
     steps:
       - name: Install packages

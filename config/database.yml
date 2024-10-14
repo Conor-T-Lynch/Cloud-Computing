@@ -1,4 +1,6 @@
 default: &default
+
+
 # SQLite. Versions 3.8.0 and up are supported.
 #   gem install sqlite3
 #
@@ -16,7 +18,7 @@ default: &default
 
 development:
   <<: *default
-  database: db/migrate/development.sqlite3
+  database: db/development.sqlite3
 
 
 # Warning: The database defined as "test" will be erased and
@@ -25,11 +27,11 @@ development:
 
 test:
   <<: *default
-  database: db/migrate/test.sqlite3
+  database: db/test.sqlite3
 
 
 # For production, ensure the database path is on a persistent volume when deployed.
 
 production:
   <<: *default
-  database: db/migrate/production.sqlite3
+  database: db/production.sqlite3
