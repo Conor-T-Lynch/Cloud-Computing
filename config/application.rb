@@ -18,7 +18,7 @@ module InfoManagementSystem
 
 
     # Ensure the observers are loaded from the specified directory
-    config.autoload_paths += %W[#{config.root}/app/models/observers]
+    config.autoload_paths += %W[{config.root}/app/models/observers]
 
     # Configure Active Record observers
     config.active_record.observers = :password_reset_observer, :article_observer
