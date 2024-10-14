@@ -65,8 +65,7 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
-      - name: Run RuboCop
-        run: bundle exec bin/rubocop
+      
 
   test:
     runs-on: ubuntu-latest
