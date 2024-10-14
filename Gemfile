@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 gem "pg"
 gem "pundit"
-gem "bootstrap", "~> 5.1.0"
+gem "bootstrap", "~> 5.3.3"
 gem "devise"
 gem "rails-observers", "~> 0.1.3"
 gem "sassc-rails"
