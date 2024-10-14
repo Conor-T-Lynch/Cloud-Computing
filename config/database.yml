@@ -13,6 +13,7 @@ default: &default
   pool: 5
   timeout: 5000
 
+adapter: sqlite3
 development:
   <<: *default
   database: db/development.sqlite3
