@@ -64,8 +64,8 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
-
       
+
 
   test:
     runs-on: ubuntu-latest
@@ -86,11 +86,13 @@ jobs:
       - name: Set executable permissions for bin/rails
         run: chmod +x bin/rails
 
-      - name: Set up database
+      - name: Set up the database
+        env:
+          RAILS_ENV: test
         run: |
           cp config/database.yml.ci config/database.yml
-          bundle exec bin/rails db:create
-          bundle exec bin/rails db:schema:load
+          bin/rails db:create
+          bin/rails db:migrate
 
       - name: Run tests
         env:
@@ -104,3 +106,4 @@ jobs:
           name: screenshots
           path: ${{ github.workspace }}/tmp/screenshots
           if-no-files-found: ignore
+
