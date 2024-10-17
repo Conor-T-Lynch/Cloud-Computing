@@ -8,8 +8,40 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
-    authorize Article  # Ensure users can view articles
+    if params[:title].present?
+      @articles = ArticleSearch.search(params[:title])
+    else
+      @articles = Article.all
+    end
+    authorize Article
+  end  
+
+  # GET /articles/search
+  def search
+    if params[:title].present?
+      @article = ArticleSearch.search(params[:title]).first
+      
+      if @article
+        # Redirect to the "Show Article" page if a match is found
+        redirect_to @article
+      else
+        # If no article is found, redirect back with an error message
+        flash[:alert] = "Article not found"
+        redirect_to articles_path
+      end
+    else
+      # If no search term is provided, redirect to the articles index
+      redirect_to articles_path
+    end
+  end
+
+  # GET /articles/search_results
+  def search_results
+    if params[:title].present?
+      @articles = ArticleSearch.search(params[:title])
+    else
+      @articles = []  # No articles if no search term is provided
+    end
   end
 
   # GET /articles/1 or /articles/1.json
@@ -75,34 +107,34 @@ class ArticlesController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_article
-      @article = Article.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_article
+    @article = Article.find(params[:id])
+  end
 
-    # Ensure users can only modify their own articles
-    def authorize_article
-      authorize @article
-    end
+  # Ensure users can only modify their own articles
+  def authorize_article
+    authorize @article
+  end
 
-    # Only allow a list of trusted parameters through.
-    def article_params
-      params.require(:article).permit(:title, :body)
-    end
+  # Only allow a list of trusted parameters through.
+  def article_params
+    params.require(:article).permit(:title, :body)
+  end
 
-    # Handle record not found
-    def article_not_found
-      respond_to do |format|
-        format.html { redirect_to articles_path, notice: "Article not found.", status: :not_found }
-        format.json { render json: { error: "Article not found" }, status: :not_found }
-      end
+  # Handle record not found
+  def article_not_found
+    respond_to do |format|
+      format.html { redirect_to articles_path, notice: "Article not found.", status: :not_found }
+      format.json { render json: { error: "Article not found" }, status: :not_found }
     end
+  end
 
-    # Handle unauthorized access
-    def user_not_authorized
-      respond_to do |format|
-        format.html { redirect_to articles_path, notice: "You are not authorized to perform this action.", status: :forbidden }
-        format.json { render json: { error: "Not authorized" }, status: :forbidden }
-      end
+  # Handle unauthorized access
+  def user_not_authorized
+    respond_to do |format|
+      format.html { redirect_to articles_path, notice: "You are not authorized to perform this action.", status: :forbidden }
+      format.json { render json: { error: "Not authorized" }, status: :forbidden }
     end
+  end
 end

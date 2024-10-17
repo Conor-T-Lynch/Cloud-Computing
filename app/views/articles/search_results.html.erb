@@ -1,0 +1,16 @@
+<h1>Search Results</h1>
+
+<% if @articles.any? %>
+  <ul>
+    <% @articles.each do |article| %>
+      <li>
+        <%= link_to article.title, article_path(article) %>
+        <p><%= truncate(article.body, length: 100) %></p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No articles found for your search.</p>
+<% end %>
+
+<%= link_to 'Back to Articles', articles_path %>

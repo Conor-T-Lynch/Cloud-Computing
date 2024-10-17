@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users  # Devise automatically creates sign in and sign out routes
 
-  resources :articles
+  resources :articles do
+    collection do
+      get 'search'  # Route for the search action
+      get 'search_results'  # Route for the search results action
+    end
+  end
 
   # Other routes...
   get "up" => "rails/health#show", as: :rails_health_check
@@ -9,5 +14,6 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest"
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  # Uncomment and set the desired root path if needed
+  # root "articles#index"
 end
